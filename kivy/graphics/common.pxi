@@ -8,6 +8,7 @@ cdef extern from *:
 cdef double pi = 3.1415926535897931
 cdef extern from "math.h":
     double cos(double) nogil
+    double acos(double) nogil
     double sin(double) nogil
     double sqrt(double) nogil
     double pow(double x, double y) nogil
