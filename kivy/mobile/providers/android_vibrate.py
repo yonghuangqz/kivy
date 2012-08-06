@@ -6,7 +6,8 @@ Support of Android Vibrate function
 
 __all__ = ('Android_VibrateProvider', )
 
-from kivy.mobile.Vibrator import VibratorProvider
+from kivy.mobile.vibrator import VibratorProvider
+import android
 
 
 class Android_VibrateProvider(VibratorProvider):
@@ -15,5 +16,6 @@ class Android_VibrateProvider(VibratorProvider):
     def __init__(self, **kwargs):
         pass
 
-    def vibrate(self, duration=1, intensity=1):
+    def vibrate(self, duration=1):
+        android.vibrate(duration)
         pass
