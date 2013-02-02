@@ -82,6 +82,19 @@
         allow_stretch: True
         source: 'atlas://data/images/defaulttheme/splitter_grip' + root.horizontal
 
+<DrawerHandle>:
+    collapsed: True
+    on_release: self.collapsed =  self.parent.collapsed
+    border: self.parent.border if self.parent else (3, 3, 3, 3)
+    horizontal: '_h' if self.parent and self.parent.sizable_from[0] in  ('t', 'b') else ''
+    background_normal: 'atlas://data/images/defaulttheme/splitter' + self.horizontal
+    background_down: 'atlas://data/images/defaulttheme/splitter_down' + self.horizontal
+    Image:
+        pos: root.pos
+        size: root.size
+        allow_stretch: True
+        source: 'atlas://data/images/defaulttheme/slider_cursor' if root.collapsed else 'atlas://data/images/defaulttheme/checkbox_radio_on'
+
 <Scatter>:
     canvas.before:
         PushMatrix
