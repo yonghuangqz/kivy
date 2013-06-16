@@ -583,6 +583,7 @@ from kivy.utils import QueryDict
 from kivy.cache import Cache
 from kivy import kivy_data_dir, require
 from kivy.compat import PY2, iteritems, iterkeys
+from kivy.context import register_context
 import kivy.metrics as Metrics
 from weakref import ref
 
@@ -1634,7 +1635,7 @@ class BuilderBase(object):
                         '{}: {}'.format(e.__class__.__name__, e))
 
 #: Main instance of a :class:`BuilderBase`.
-Builder = BuilderBase()
+Builder = register_context('Builder', BuilderBase)
 Builder.load_file(join(kivy_data_dir, 'style.kv'), rulesonly=True)
 
 if 'KIVY_PROFILE_LANG' in environ:
