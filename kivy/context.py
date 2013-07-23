@@ -7,6 +7,7 @@ framework: `Cache`, `Builder`, `Clock`.
 
 '''
 
+
 class ProxyContext(object):
     __slots__ = ['_obj']
 
@@ -37,6 +38,7 @@ _contexts = {}
 _default_context = None
 _context_stack = []
 
+
 class Context(dict):
     def __init__(self, init=False):
         dict.__init__(self)
@@ -46,7 +48,6 @@ class Context(dict):
             context = _contexts[name]
             instance = context['cls'](*context['args'], **context['kwargs'])
             self[name] = instance
-
 
     def push(self):
         _context_stack.append(self)
@@ -70,7 +71,10 @@ def register_context(name, cls, *args, **kwargs):
     _default_context[name] = instance
     return proxy
 
+
 def get_current_context():
     return _context_stack[-1]
 
+
 _default_context = Context(init=False)
+_context_stack.append(_default_context)
