@@ -1133,7 +1133,7 @@ class Parser(object):
                 if len(x) == 2 and len(x[1]):
                     raise ParserException(self, ln,
                                           'Invalid data after declaration')
-                name = x[0]
+                name = x[0].strip()
                 # if it's not a root rule, then we got some restriction
                 # aka, a valid name, without point or everything else
                 if count != 0:
